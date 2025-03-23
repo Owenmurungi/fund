@@ -1,0 +1,353 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Donations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <button class="menu-toggle">☰</button>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#donations">Donations</a></li>
+            <li><a href="#campaigns">Campaigns</a></li>
+            <li><a href="#donors">Donors</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#settings">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <button>Logout</button>
+        </header>
+        <section id="dashboard" class="section">
+            <h2>Overview</h2>
+            <div class="stats">
+                <div class="card">Total Donations: $50,000</div>
+                <div class="card">Total Donors: 1,200</div>
+                <div class="card">Active Campaigns: 5</div>
+                <div class="card">Successful Transactions: 98%</div>
+            </div>
+            <canvas id="donationChart"></canvas>
+        </section>
+        <section id="donations" class="section">
+            <h2>Manage Donations</h2>
+            <table>
+                <tr><th>Donor</th><th>Amount</th><th>Payment Method</th><th>Date</th></tr>
+                <tr><td>John Doe</td><td>$200</td><td>Credit Card</td><td>2025-03-22</td></tr>
+                <tr><td>Jane Smith</td><td>$150</td><td>PayPal</td><td>2025-03-21</td></tr>
+            </table>
+        </section>
+        <section id="campaigns" class="section">
+            <h2>Campaign Management</h2>
+            <button>Add New Campaign</button>
+        </section>
+        <section id="donors" class="section">
+            <h2>Donor List</h2>
+            <input type="text" placeholder="Search Donors">
+        </section>
+        <section id="reports" class="section">
+            <h2>Financial Reports</h2>
+            <p>Download and analyze donation trends.</p>
+        </section>
+        <section id="settings" class="section">
+            <h2>Admin Settings</h2>
+            <button>Manage Admins</button>
+        </section>
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 23%;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats {
+                flex-direction: column;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".sidebar").classList.toggle("open");
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Donations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <button class="menu-toggle">☰</button>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#donations">Donations</a></li>
+            <li><a href="#campaigns">Campaigns</a></li>
+            <li><a href="#donors">Donors</a></li>
+            <li><a href="#settings">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <button>Logout</button>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <h2>Overview</h2>
+            <div class="stats">
+                <div class="card">Total Donations: $50,000</div>
+                <div class="card">Total Donors: 1,200</div>
+                <div class="card">Active Campaigns: 5</div>
+                <div class="card">Successful Transactions: 98%</div>
+            </div>
+            <canvas id="donationChart"></canvas>
+        </section>
+
+        <!-- Donations Section -->
+        <section id="donations" class="section">
+            <h2>Manage Donations</h2>
+            <table>
+                <tr><th>Donor</th><th>Amount</th><th>Payment Method</th><th>Date</th></tr>
+                <tr><td>John Doe</td><td>$200</td><td>Credit Card</td><td>2025-03-22</td></tr>
+                <tr><td>Jane Smith</td><td>$150</td><td>PayPal</td><td>2025-03-21</td></tr>
+            </table>
+        </section>
+
+        <!-- Campaigns Section -->
+        <section id="campaigns" class="section">
+            <h2>Campaign Management</h2>
+            <button>Add New Campaign</button>
+            <div class="campaign-list">
+                <div class="campaign-card">
+                    <h3>Campaign 1</h3>
+                    <p>Progress: $10,000 / $50,000</p>
+                </div>
+                <div class="campaign-card">
+                    <h3>Campaign 2</h3>
+                    <p>Progress: $5,000 / $25,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donors Section -->
+        <section id="donors" class="section">
+            <h2>Donor List</h2>
+            <input type="text" placeholder="Search Donors">
+            <table>
+                <tr><th>Donor Name</th><th>Email</th><th>Total Donations</th></tr>
+                <tr><td>John Doe</td><td>johndoe@example.com</td><td>$1,200</td></tr>
+                <tr><td>Jane Smith</td><td>janesmith@example.com</td><td>$800</td></tr>
+            </table>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section">
+            <h2>Admin Settings</h2>
+            <button>Manage Admins</button>
+            <button>Change Site Settings</button>
+        </section>
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 23%;
+        }
+        .campaign-list {
+            display: flex;
+            gap: 20px;
+        }
+        .campaign-card {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats {
+                flex-direction: column;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .campaign-list {
+                flex-direction: column;
+            }
+            .campaign-card {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".sidebar").classList.toggle("open");
+        });
+
+        const ctx = document.getElementById('donationChart').getContext('2d');
+        const donationChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['March 1', 'March 2', 'March 3', 'March 4', 'March 5'],
+                datasets: [{
+                    label: 'Daily Donations',
+                    data: [1000, 2000, 1500, 3000, 2500],
+                    borderColor: '#ff6b6b',
+                    fill: false
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
+
