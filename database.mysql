@@ -1,0 +1,65 @@
+
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('Admin', 'Manager', 'Viewer') NOT NULL DEFAULT 'Admin',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE donors (
+    donor_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    total_donated DECIMAL(10,2) DEFAULT 0.00,
+    date_joined TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    phone_number VARCHAR(20) NULL,
+    address TEXT NULL
+);
+
+
+CREATE TABLE campaigns (
+    campaign_id INT AUTO_INCREMENT PRIMARY KEY,
+    campaign_name VARCHAR(255) NOT NULL,
+    goal_amount DECIMAL(10,2) NOT NULL,
+    total_donated DECIMAL(10,2) DEFAULT 0.00,
+    description TEXT NOT NULL,
+    start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    end_date TIMESTAMP NOT NULL,
+    status ENUM('Active', 'Completed', 'Paused') DEFAULT 'Active'
+);
+
+
+CREATE TABLE donations (
+    donation_id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_method ENUM('Credit Card', 'PayPal', 'Bank Transfer') NOT NULL,
+    donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    campaign_id INT NOT NULL,
+    FOREIGN KEY (donor_id) REFERENCES donors(donor_id) ON DELETE CASCADE,
+    FOREIGN KEY (campaign_id) REFERENCES campaigns(campaign_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    donation_id INT NOT NULL,
+    payment_status ENUM('Pending', 'Completed', 'Failed') NOT NULL DEFAULT 'Pending',
+    transaction_id VARCHAR(100) UNIQUE NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (donation_id) REFERENCES donations(donation_id) ON DELETE CASCADE
+);
+
+
+indexing  
+
+CREATE INDEX idx_donors_email ON donors(email);
+CREATE INDEX idx_campaign_status ON campaigns(status);
+CREATE INDEX idx_donations_campaign ON donations(campaign_id);
+CREATE INDEX idx_payments_transaction ON payments(transaction_id);
